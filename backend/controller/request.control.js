@@ -104,7 +104,7 @@ const requestUser = async (req, res) => {
     res.status(500).json({
       success: false,
       error: error.message,
-      message: "Internal server error",
+      message: "Internal Meezan_server error",
     });
   }
 };
@@ -539,8 +539,6 @@ const assignDate = async (req, res) => {
       { new: true }
     );
 
-    console.log(result);
-
     if (!result) {
       return res
         .status(404)
@@ -747,6 +745,93 @@ const sendInvoiceLetterToVendor = async (req, res) => {
   }
 };
 
+const acceptInvoiceFromVendor = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const result = await RequestByUser.findByIdAndUpdate(
+      id,
+      { isAcceptFinalInvoiceVendor: true },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Request not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Invoice accepted successfully",
+    });
+  } catch (error) {
+    console.error("Error in acceptInvoiceFromVendor:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    });
+  }
+};
+
+const rejectSalesRecipt = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "Request ID is required.",
+      });
+    }
+
+    try {
+      await axios.put(
+        `${process.env.VENDOR_URL}/aprove/rejectsale-receipt/${id}`
+      );
+    } catch (axiosError) {
+      console.error("Failed to notify vendor service:", axiosError.message);
+      return res.status(502).json({
+        success: false,
+        message: "Failed to notify vendor service.",
+        error: axiosError.message,
+      });
+    }
+
+    const result = await RequestByUser.findByIdAndUpdate(
+      id,
+      {
+        status: "invoice Rejected",
+        isInvoiceRejectedByBank: true,
+      },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Request not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Sales receipt rejected successfully.",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Error in rejectSalesRecipt:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error rejectSalesRecipt",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   requestUser,
   getAllRequest,
@@ -764,4 +849,6 @@ module.exports = {
   // sendInvoiceLetterToUser,
   userAcceptDelivery,
   sendInvoiceLetterToVendor,
+  acceptInvoiceFromVendor,
+  rejectSalesRecipt,
 };

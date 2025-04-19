@@ -16,6 +16,8 @@ const {
   sendInvoiceLetterToUser,
   userAcceptDelivery,
   sendInvoiceLetterToVendor,
+  acceptInvoiceFromVendor,
+  rejectSalesRecipt,
 } = require("../controller/request.control");
 
 const route = Router();
@@ -54,5 +56,9 @@ route.put("/send-autherized-letter-user/:id", sendAutherizedLetterToUser);
 route.put("/send-invoice-letter-vendor/:id", sendInvoiceLetterToVendor);
 
 route.put("/user-accept-delivery/:id", userAcceptDelivery);
+
+route.put("/accept-to-vendor-finalinvoice/:id", acceptInvoiceFromVendor);
+
+route.put("/rejectsale-receipt/:id", rejectSalesRecipt);
 
 module.exports = route;

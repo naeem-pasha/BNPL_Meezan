@@ -9,6 +9,7 @@ import DeliveryAuthorizationDialog from "./components/ui/custom/DeliveryAuthoriz
 import { Toaster } from "./components/ui/toaster";
 import InvoiceLetter from "./components/ui/custom/InvoiceLetter";
 import { Input } from "./components/ui/input";
+import FinalInvoice from "./components/ui/custom/FinalInvoice";
 
 const apiUrl = import.meta.env.VITE_MEEZAN_SERVER;
 
@@ -42,6 +43,8 @@ export interface RequestData {
   deliveryDate: string;
   installment_tenure: number;
   price_meezan: number;
+  isAcceptFinalInvoiceVendor: boolean;
+  isInvoiceRejectedByBank: boolean;
   price: number;
   _id: string;
   __v: number;
@@ -626,6 +629,7 @@ const CustomerRow = ({ data, getAllRequest }: customerRowProps) => {
             {data.isShowInvoice && <InvoiceLetter data={data} />}
           </>
         )}
+        {data.isAcceptFinalInvoiceVendor && <FinalInvoice data={data} />}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
         {data.isUserAcceptDelivery && (

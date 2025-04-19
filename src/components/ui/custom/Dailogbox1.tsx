@@ -17,7 +17,6 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
 
   const handleAccepts = async (id: string) => {
     try {
-      // Validate ID
       if (!id) {
         console.error("Request ID is required.");
         return;
@@ -43,10 +42,33 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
     }
   };
 
-  console.log(customer?.price_meezan);
   if (!customer?.price_meezan) {
     return <p>loading...</p>;
   }
+
+  const handleReject = async (id: string) => {
+    try {
+      if (!id) {
+        console.error("Request ID is required.");
+        return;
+      }
+
+      const response = await axios.put(
+        `${
+          import.meta.env.VITE_MEEZAN_SERVER
+        }/api/request/rejectsale-receipt/${id}`
+      );
+
+      if (response.data.success) {
+        window.location.reload();
+        console.log("Sales receipt rejected successfully:", response.data);
+      } else {
+        console.error("Failed to reject sales receipt:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error in handleReject:", error);
+    }
+  };
   const priceInWords = numberToWords.toWords(customer?.price_meezan);
 
   return (
@@ -74,7 +96,7 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
               </div>
             </div>
             <div className="text-center font-bold mb-4">
-              Mgezgn Bank Limited
+              Meezan Bank Limited
             </div>
           </div>
 
@@ -131,7 +153,7 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
               Order, we offer to sell you the captioned asset at the
               above-mentioned price. Please acknowledge this offer. Upon
               confirmation the ownership and hence the risk and reward of the
-              asset shall be transferred to Mgezgn Bank.
+              asset shall be transferred to Meezan Bank.
             </p>
           </div>
 
@@ -140,11 +162,21 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
           <Button
             onClick={() => handleAccepts(customer._id)}
             className="bg-green-800 hover:bg-green-500"
-            disabled={customer.ownerShipTransfer}
+            disabled={
+              customer.ownerShipTransfer || customer.isInvoiceRejectedByBank
+            }
           >
             Accept
           </Button>
-          <Button className="bg-red-800 hover:bg-red-500">Reject</Button>
+          <Button
+            className="bg-red-800 hover:bg-red-500"
+            onClick={() => handleReject(customer._id)}
+            disabled={
+              customer.ownerShipTransfer || customer.isInvoiceRejectedByBank
+            }
+          >
+            Reject
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

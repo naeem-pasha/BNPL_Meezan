@@ -149,7 +149,7 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
               price. Now,the ownership of the mentioned assest is transfered to
               MBL, and the risk and reward of the asset shall also be
               transferred to Meezan Bank, as per agrreed terms in our MOU. after
-              which it shall be taken over by you as a trustee of MBL.
+              which it shall be taken over by us as a trustee of MBL.
             </p>
           </div>
 

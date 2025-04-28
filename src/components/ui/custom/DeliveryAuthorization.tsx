@@ -163,13 +163,13 @@ export default function DeliveryAuthorizationDialog({
           </h3>
           <p className="text-gray-600 mb-4">
             With reference to the Musawamah contract, signed between MBL and you
-            #,{data?._id.split("-")[0]},
+            #{data?._id.split("-")[0]}
             {/* dated
             <span className="font-semibold">
               {" "}
               {data?.updatedAt.split("T")[0]}
             </span> */}
-            .We hereby allow you to take possession of the Goods from and have
+            . We hereby allow you to take possession of the Goods from and have
             following details:
           </p>
         </div>

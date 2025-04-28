@@ -159,16 +159,17 @@ export default function DeliveryAuthorizationDialog({
         {/* Subject Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold mb-4 border-b-2 border-dashed pb-2">
-            Authorization to Deliver the Goods
+            Authorization to take delivery the Bike
           </h3>
           <p className="text-gray-600 mb-4">
-            With reference to the Musawamah contract, signed between MBL and
-            you,{data?._id.split("-")[0]}, dated
+            With reference to the Musawamah contract, signed between MBL and you
+            #,{data?._id.split("-")[0]},
+            {/* dated
             <span className="font-semibold">
               {" "}
               {data?.updatedAt.split("T")[0]}
-            </span>
-            , we hereby allow you to take possession of the Goods from and have
+            </span> */}
+            .We hereby allow you to take possession of the Goods from and have
             following details:
           </p>
         </div>

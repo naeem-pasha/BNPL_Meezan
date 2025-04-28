@@ -169,8 +169,8 @@ export default function DeliveryAuthorizationDialog({
               {" "}
               {data?.updatedAt.split("T")[0]}
             </span> */}
-            . We hereby allow you to take possession of the Bike from and have
-            following details:
+            . We hereby allow you to take possession of the Bike have following
+            details:
           </p>
         </div>
 

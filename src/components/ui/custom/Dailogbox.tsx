@@ -121,6 +121,14 @@ const Dailogbox = ({ customer }: dailogProps) => {
               </tbody>
             </table>
           </section>
+
+          {/* <!-- Footer Note --> */}
+          <div className="mt-8 text-xs text-gray-600 text-center">
+            I hereby request to purchase above mentioned asset from Meezan Bank
+            Limited, on stated terms and conditions. I understand that the asset
+            will be financed by Meezan Bank Limited and I will be liable to pay
+            the bank the agreed price on installments basis.
+          </div>
         </div>
       </DialogContent>
     </Dialog>

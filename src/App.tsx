@@ -10,6 +10,8 @@ import { Toaster } from "./components/ui/toaster";
 import InvoiceLetter from "./components/ui/custom/InvoiceLetter";
 import { Input } from "./components/ui/input";
 import FinalInvoice from "./components/ui/custom/FinalInvoice";
+import RejectedPurchaseOrder from "./components/ui/custom/PORejected";
+import RejectedMusawamah from "./components/ui/custom/RejectedMusawamah";
 
 const apiUrl = import.meta.env.VITE_MEEZAN_SERVER;
 
@@ -45,6 +47,9 @@ export interface RequestData {
   price_meezan: number;
   isAcceptFinalInvoiceVendor: boolean;
   isInvoiceRejectedByBank: boolean;
+  isRejectPurchaseOrder: boolean;
+  isRejectMusawamah: boolean;
+  isRejectSendMusawamahToVendor: boolean;
   price: number;
   _id: string;
   __v: number;
@@ -621,6 +626,8 @@ const CustomerRow = ({ data, getAllRequest }: customerRowProps) => {
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
         <Dailogbox customer={data} />
         {data.isAprovedByVendor && <SalesReciptDailog customer={data} />}
+        {data.isRejectPurchaseOrder && <RejectedPurchaseOrder data={data} />}
+        {data.isRejectMusawamah && <RejectedMusawamah data={data} />}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
         {data.isAcceptMusawamah && (
@@ -629,6 +636,7 @@ const CustomerRow = ({ data, getAllRequest }: customerRowProps) => {
             {data.isShowInvoice && <InvoiceLetter data={data} />}
           </>
         )}
+
         {data.isAcceptFinalInvoiceVendor && <FinalInvoice data={data} />}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">

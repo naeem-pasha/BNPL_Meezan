@@ -46,6 +46,9 @@ const requestByUserSchema = new mongoose.Schema(
     price_meezan: { type: Number },
     isAcceptFinalInvoiceVendor: { type: Boolean },
     isInvoiceRejectedByBank: { type: Boolean },
+    isRejectPurchaseOrder: { type: Boolean },
+    isRejectMusawamah: { type: Boolean },
+    isRejectSendMusawamahToVendor: { type: Boolean },
   },
   { timestamps: true }
 );

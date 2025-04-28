@@ -84,16 +84,10 @@ const InvoiceLetter = ({ data }: DeliveryAuthorizationProps) => {
             {/* Main Content */}
             <div className="mb-4">
               <p className="mb-2">
-                With reference to the details and price of the Bike Engine No.
+                With reference to the sale receipt of the Bike having Engine No.
                 <span className="font-bold">{data.engineNo}</span> MBL/GN0010000
-                & Chassis No. <span className="font-bold">{data.chasisNo}</span>
-                mentioned in your offer to sell via Sale Receipt and MBL's
-                acceptance dated{" "}
-                <span className="font-bold">
-                  {data.updatedAt.split("T")[0]}
-                </span>{" "}
-                through which MBL purchased the Bike & which you are holding
-                right now on trust basis.
+                & Chassis No. <span className="font-bold">{data.chasisNo}</span>{" "}
+                and which you are holding right now on trust basis.
               </p>
 
               <p className="mb-2">

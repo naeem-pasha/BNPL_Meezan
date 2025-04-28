@@ -5,6 +5,7 @@ const { default: mongoose } = require("mongoose");
 const requestByUserSchema = require("../utils/validate.request");
 const { z } = require("zod");
 const FailedRequest = require("../models/failer.model");
+const { data } = require("autoprefixer");
 
 const requestUser = async (req, res) => {
   try {
@@ -832,6 +833,120 @@ const rejectSalesRecipt = async (req, res) => {
   }
 };
 
+const rejectPurchaseOrder = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const result = await RequestByUser.findByIdAndUpdate(
+      id,
+      { isRejectPurchaseOrder: true },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Request not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Purchase order rejected successfully.",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Internal server error in meezan bank:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while rejecting the purchase order.",
+      error: error.message,
+    });
+  }
+};
+
+const rejectMusawamahUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const result = await RequestByUser.findByIdAndUpdate(
+      id,
+      { isRejectMusawamah: true },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Request not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "musawamah rejected successfully.",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Internal server error in meezan bank:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while rejecting the musawamah in Bank.",
+      error: error.message,
+    });
+  }
+};
+
+const rejectMusawamahToVendor = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    try {
+      const { data } = await axios.put(
+        `${process.env.VENDOR_URL}/aprove/reject-musawamah/${id}`
+      );
+      // Optionally check the `data` for success if needed
+    } catch (axiosError) {
+      console.error("Failed to notify bank server:", axiosError.message);
+
+      return res.status(200).json({
+        success: true,
+        message: "User rejected locally, but failed to notify bank server.",
+        data: data,
+      });
+    }
+
+    const result = await RequestByUser.findByIdAndUpdate(
+      id,
+      { isRejectSendMusawamahToVendor: true },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Request not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "musawamah rejected successfully.",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Internal server error in meezan bank:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while rejecting the musawamah in Bank.",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   requestUser,
   getAllRequest,
@@ -851,4 +966,7 @@ module.exports = {
   sendInvoiceLetterToVendor,
   acceptInvoiceFromVendor,
   rejectSalesRecipt,
+  rejectPurchaseOrder,
+  rejectMusawamahUser,
+  rejectMusawamahToVendor,
 };

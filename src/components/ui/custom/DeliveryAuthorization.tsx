@@ -212,7 +212,7 @@ export default function DeliveryAuthorizationDialog({
           </div>
           <div className="space-y-2">
             <div className="flex gap-2">
-              <span className="font-semibold w-32">Buyer CXUC Number:</span>
+              <span className="font-semibold w-32">Buyer CNIC Number:</span>
               <span>{data.cnic}</span>
             </div>
             <div className="flex gap-2">

@@ -86,10 +86,7 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
           <div className="text-center mb-6">
             <h1 className="text-2xl font-bold mb-4">Sales Receipt</h1>
             <div className="flex justify-between mb-2">
-              <div className="text-left">
-                <span className="font-semibold">SR#:</span>{" "}
-                {customer._id.split("-")[0]}
-              </div>
+              <div className="text-left"></div>
               <div className="text-right">
                 <span className="font-semibold">Date:</span>{" "}
                 {customer.updatedAt.split("T")[0]}
@@ -106,7 +103,9 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
               <span className="font-semibold">MBL.Order Reference#</span>
             </div>
             <div className="text-right">
-              <span className="font-semibold">Mr.{customer.name}</span>
+              <span className="font-semibold">
+                {customer._id.split("-")[0]}
+              </span>
             </div>
           </div>
 
@@ -127,11 +126,7 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
                 <td className="p-2">{customer.chasisNo}</td>
                 <td className="p-2">{customer.price_meezan}</td>
               </tr>
-              <tr>
-                <td colSpan={4} className="p-2 text-sm">
-                  Engine number/Chassis number/Color including Tax
-                </td>
-              </tr>
+              <tr></tr>
             </tbody>
           </table>
 
@@ -150,10 +145,11 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
           <div className="text-xs mb-6">
             <p className="mb-2">
               With reference to details of the asset mentioned in the Purchase
-              Order, we offer to sell you the captioned asset at the
-              above-mentioned price. Please acknowledge this offer. Upon
-              confirmation the ownership and hence the risk and reward of the
-              asset shall be transferred to Meezan Bank.
+              Order, we sold you the captioned asset,at the above-mentioned
+              price. Now,the ownership of the mentioned assest is transfered to
+              MBL, and the risk and reward of the asset shall also be
+              transferred to Meezan Bank, as per agrreed terms in our MOU. after
+              which it shall be taken over by you as a trustee of MBL.
             </p>
           </div>
 

@@ -121,48 +121,6 @@ const Dailogbox = ({ customer }: dailogProps) => {
               </tbody>
             </table>
           </section>
-
-          {/* <!-- Justification Section --> */}
-          <section className="mb-8">
-            <h2 className="text-lg font-bold bg-gray-100 px-2 py-1 mb-4">
-              Justification
-            </h2>
-            <div className="border border-gray-400 p-3 h-32 text-sm">
-              Current equipment is outdated and insufficient for development
-              tasks. New laptop required for project deadlines.
-            </div>
-          </section>
-
-          {/* <!-- Approval Section --> */}
-          {/* <section className="mt-12">
-            <div className="flex justify-between text-sm">
-              <div className="w-[45%]">
-                <div className="border-t border-gray-400 pt-2">
-                  <span className="font-semibold">Requester Signature:</span>
-                  <div className="h-16 mt-2 border border-gray-400"></div>
-                  <div className="mt-1 text-xs text-gray-600">
-                    Date: ___________
-                  </div>
-                </div>
-              </div>
-
-              <div className="w-[45%]">
-                <div className="border-t border-gray-400 pt-2">
-                  <span className="font-semibold">Approver Signature:</span>
-                  <div className="h-16 mt-2 border border-gray-400"></div>
-                  <div className="mt-1 text-xs text-gray-600">
-                    Date: ___________
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
-          {/* <!-- Footer Note --> */}
-          <div className="mt-8 text-xs text-gray-600 text-center">
-            Note: This form must be approved by department head before
-            processing
-          </div>
         </div>
       </DialogContent>
     </Dialog>

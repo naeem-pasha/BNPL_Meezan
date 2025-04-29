@@ -84,7 +84,7 @@ const InvoiceLetter = ({ data }: DeliveryAuthorizationProps) => {
             {/* Main Content */}
             <div className="mb-4">
               <p className="mb-2">
-                With reference to the sale receipt of the Bike having Engine No.
+                With reference to the bike sold to MBL, having Engine No.
                 <span className="font-bold">{data.engineNo}</span> MBL/GN0010000
                 & Chassis No. <span className="font-bold">{data.chasisNo}</span>{" "}
                 and which you are holding right now on trust basis.
@@ -92,7 +92,7 @@ const InvoiceLetter = ({ data }: DeliveryAuthorizationProps) => {
 
               <p className="mb-2">
                 This is to inform you that we have now sold the Bike to one of
-                our financing customers. Therefore, you are requested to please
+                our financing customer. Therefore, you are requested to please
                 issue formal sale certificate / sale invoice in favor of our
                 customer (the End User).
               </p>

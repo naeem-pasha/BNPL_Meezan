@@ -85,9 +85,9 @@ const InvoiceLetter = ({ data }: DeliveryAuthorizationProps) => {
             <div className="mb-4">
               <p className="mb-2">
                 With reference to the bike sold to MBL, having Engine No.
-                <span className="font-bold">{data.engineNo}</span> MBL/GN0010000
-                & Chassis No. <span className="font-bold">{data.chasisNo}</span>{" "}
-                and which you are holding right now on trust basis.
+                <span className="font-bold">{data.engineNo}</span>& Chassis No.{" "}
+                <span className="font-bold">{data.chasisNo}</span> and which you
+                are holding right now on trust basis.
               </p>
 
               <p className="mb-2">

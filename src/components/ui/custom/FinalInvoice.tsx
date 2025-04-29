@@ -34,9 +34,7 @@ export default function FinalInvoice({ data }: FinalInvoiceProps) {
 
           <div className="border border-gray-800">
             <div className="border-b border-gray-800 text-center py-2 bg-gray-100">
-              <p className="font-bold text-lg">
-                Invoice (Merchant to <span className="text-red-600">MBL</span>)
-              </p>
+              <p className="font-bold text-lg">Invoice</p>
             </div>
 
             <div className="grid grid-cols-2 border-b border-gray-800">

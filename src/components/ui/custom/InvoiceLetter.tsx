@@ -76,7 +76,7 @@ const InvoiceLetter = ({ data }: DeliveryAuthorizationProps) => {
             {/* To Section */}
             <div className="mb-4">
               <p className="mb-2">
-                To Mr.{" "}
+                To{" "}
                 <span className="font-bold">
                   {" "}
                   <p>Honda Atlas</p>

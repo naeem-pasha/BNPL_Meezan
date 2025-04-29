@@ -159,7 +159,7 @@ export default function DeliveryAuthorizationDialog({
         {/* Subject Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold mb-4 border-b-2 border-dashed pb-2">
-            Authorization to take delivery the Bike
+            Authorization to take delivery of the Bike
           </h3>
           <p className="text-gray-600 mb-4">
             With reference to the Musawamah contract, signed between MBL and

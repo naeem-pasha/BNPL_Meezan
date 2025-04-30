@@ -94,7 +94,7 @@ const InvoiceLetter = ({ data }: DeliveryAuthorizationProps) => {
               </p>
 
               <p className="mb-2">
-                This is to inform you that we have now sold the Bike to one of
+                This is to inform youc that we have now sold the Bike to one of
                 our financing customer. Therefore, you are requested to please
                 issue formal sale certificate / sale invoice in favor of our
                 customer (the End User).

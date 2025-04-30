@@ -145,11 +145,12 @@ const SalesReciptDailog = ({ customer }: dailogProps) => {
           <div className="text-xs mb-6">
             <p className="mb-2">
               With reference to details of the asset mentioned in the Purchase
-              Order, we sold you the captioned asset,at the above-mentioned
-              price. Now,the ownership of the mentioned assest is transfered to
-              MBL, and the risk and reward of the asset shall also be
-              transferred to Meezan Bank, as per agrreed terms in our MOU. after
-              which it shall be taken over by us as a trustee of MBL.
+              Order, we are offering to sale you the captioned asset,at the
+              above-mentioned price. Upon acceptance,the ownership of the
+              mentioned assest will be transfered to MBL, and the risk and
+              reward of the asset shall also be transferred to Meezan Bank, as
+              per agrreed terms in our MOU. after which it shall be taken over
+              by us as a trustee of MBL.
             </p>
           </div>
 
